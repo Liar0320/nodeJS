@@ -2,6 +2,7 @@ const cheerio = require('cheerio');
 const iconv = require('iconv-lite');
 const http = require('http');
 const https = require('https');
+const fs = require('fs')
 var count = 0;
 ///请求网页
 function handle(url,call){
@@ -32,10 +33,13 @@ function handle(url,call){
                  return false;
                }   
             });
+            var bookName = $('#maininfo h1').text();
+            console.log();
+            fs.existsSync(`../content/${bookName}`)||fs.mkdirSync(`./content/${bookName}`);
             var content = $('#list a').each((index,item)=>{
                 console.log($(item).text(),$(item).attr().href.split('/')[2]);
            //    call(`${url[0]}${$(item).attr().href}`,`${$(item).attr().href.split('/')[2]}`);
-                call(`${url[0]}${$(item).attr().href}`,`${$(item).text()}`,index);
+                call(`${url[0]}${$(item).attr().href}`,`${$(item).text()}`,index,bookName);
             });
           //  saveFile(content,0);
         })

@@ -7,15 +7,13 @@ const chapter = 'http://www.biquge11.com';
 const saveHandle = require('./main/saveHandle');
 const getUrl = require('./main/getUrl')
 
-
-
-getUrl([chapter,'/1_1151/'],getMain);
+getUrl([chapter,'/0_241/'],getMain);
 ///url 章节url
 ///name 章节名称
 //getMain(`${chapter}/1_1589/3129080.html`,'激战凌梓');
-function getMain(url,name,index){
-    console.log(url,name,index);
-    saveHandle(url,name,index);
+function getMain(url,name,index,bookName){
+    console.log(url,name,index,bookName);
+    saveHandle(url,name,index,bookName);
 }
 
 

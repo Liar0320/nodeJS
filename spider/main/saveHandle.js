@@ -6,7 +6,7 @@ const https = require('https');
 //const url = 'http://www.abcxs.com/book/32172/13366448.html';
 
 ///请求网页
-function saveHandle(url,name,index){
+function saveHandle(url,name,index,bookName){
     try {
         var _http = url[0].indexOf('https')>-1?https:http;
         _http.get(url,(res)=>{
@@ -32,7 +32,7 @@ function saveHandle(url,name,index){
                 });
                 var content = $('#content').text();
                // console.log(content);
-                saveFile(content,name,index);
+                saveFile(content,name,index,bookName);
                 // var url = $('#book .page_chapter a:nth-child(3)').text();
                 // console.log('url',url);
             })
@@ -43,8 +43,8 @@ function saveHandle(url,name,index){
 }
 
 
-function saveFile(content,name='龙王传说',index){
-    fs.appendFile(`./content/${index-10}.txt`,name+content,(err)=>{
+function saveFile(content,name='龙王传说',index,bookName){
+    fs.appendFile(`./content/${bookName}/${index-10}.txt`,name+content,(err)=>{
          console.log(err);
         console.log(`${name}添加成功`);
     })
