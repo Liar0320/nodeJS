@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//cdn.bootcss.com/socket.io/1.7.2/socket.io.min.js"></script>
+    <title>websocket</title>
+</head>
+<body>
+    <div></div>
+</body>
+<script>
+    const dom = document.getElementsByTagName('div')[0];
+    const io_client = io.connect('http://localhost:8081');
+    io_client.on('data',data=>{
+        console.log('hello',data);
+        dom.innerText = data;
+    })
+</script>
+</html>

@@ -4,10 +4,16 @@ const app = express();
 let port = 8080;
 app.use(express.static(__dirname));
 app.get('/api',(req,res)=>{
-    console.log(1);
-    // http.get('http://localhost:8081/api',(data)=>{
-    //     res.send(data)
-    // })
+    try{
+        http.get('http://localhost:8081/api',(responseFromOtherDomain)=>{
+             responseFromOtherDomain.on("data", function(data) {
+                res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+                res.end(data);
+            });
+        })
+    }catch(e){
+        console.log(e);
+    }
 })
 
 ////////////
