@@ -50,5 +50,33 @@ function saveFile(content,name='龙王传说',index,bookName){
     })
 }
 
+/**
+ * 增加下载videos放发
+ * @param {*} url 
+ * @param {*} index 
+ * @param {*} name 
+ * const superagent = require('superagent');
+ */
+// var downloadVideo = function(url, index, name) {
+//     var filename = name + '.mp4';
+ 
+//     // 创建一个以课程名字命名的目录存放视频
+//     var dirPath = './videos/'
+//     if (!fs.existsSync(dirPath)) {
+//         fs.mkdirSync(dirPath);
+//     }
+ 
+//     console.log('开始下载第' + index + '个视频' + filename + ' 地址: ' + url);
+//     var writeStream = fs.createWriteStream(dirPath + filename);
+//     writeStream.on('close', function() {
+//         console.log('下载完成' + filename);
+//     })
+
+//     let req = superagent.get(url); //响应流
+    
+//     req.pipe(writeStream);
+// }
+
+
 //export default reciveContent;
 module.exports = saveHandle;
